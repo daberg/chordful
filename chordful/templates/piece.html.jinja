@@ -1,0 +1,14 @@
+{% extends 'base.html.jinja' %}}
+
+{% block content %}
+
+  <div style="text-align: center;">
+    <div class="piece-box">
+      <p class="piece-title"> {{ piece['title'] }} </p>
+      <p class="piece-artist"> {{ piece['artist'] }} </p>
+
+      <div class="chords-box"><pre class="chords"> {{ piece['chords'] }} </pre></div>
+    </div>
+  </div>
+
+{% endblock %}

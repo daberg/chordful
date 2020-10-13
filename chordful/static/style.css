@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;600&family=Fira+Code:wght@500&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+    font-family: 'Assistant', 'sans-serif';
+}
+
+.top-bar {
+    background-color: #4C566A;
+    display: grid;
+    grid-template-columns: auto auto;
+    box-shadow: 0px 3px 5px #B9B9B9;
+    align-items: center;
+}
+
+.top-bar-logo {
+    justify-self: start;
+    align-self: center;
+    padding: 1.5rem 0vw 1.5rem 3vw;
+}
+
+.top-bar-logo a {
+    color: #ECEFF4;
+    text-decoration: none;
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 600;
+}
+
+.top-bar-login {
+    justify-self: end;
+    padding: 0vh 3vw 0vh 0vw;
+}
+
+.top-bar-login a {
+    color: #ECEFF4;
+    text-decoration: none;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-weight: 300;
+}
+
+.piecelist-outer {
+    padding: 3vh 3vw 3vh 3vw;
+    height: auto;
+    width: clamp(100px, 90vw, 1000px);
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-rows: auto auto;
+}
+
+.piecelist-box {
+    padding: 3vh 3vw 3vh 3vw;
+    height: auto;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.piecelist-box table {
+    width: 100%;;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    border-radius: 5px;
+    box-shadow: 0px 3px 5px #B9B9B9;
+}
+
+.piecelist-box th {
+    font-size: clamp(1.5rem, 1.8vw, 2.2rem);
+    font-weight: bold;
+    text-align: left;
+    padding: 1vh 0vw 1vh 1vw;
+    width: 50%;
+    border: 1px solid #d8dee9;
+    color: #eceff4;
+    background-color: #81a1c1;
+}
+
+.piecelist-box tr {
+    background-color: #e5e9f0;
+}
+
+.piecelist-box tr:nth-child(even) {
+    background-color: #eceff4;
+}
+
+.piecelist-box td {
+    width: 50%;
+    border: 1px solid #d8dee9;
+    padding: 1vh 0vw 1vh 1vw;
+}
+
+.piecelist-box a {
+    color: #5E81AC;
+}
+
+.piecelist-box a:visited {
+    color: #5E81AC;
+}
+
+.piecelist-artist {
+    font-size: clamp(1.2rem, 1.4vw, 1.8rem);
+    font-style: italic;
+}
+
+.piecelist-navigator {
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 3vh 3vw 3vh 3vw;
+
+    height: auto;
+
+    width: 60%;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.piecelist-navigator p {
+    font-size: clamp(1.2rem, 1.5vw, 1.8rem);
+}
+
+.piecelist-navigator a {
+    font-size: clamp(1.2rem, 1.5vw, 1.8rem);
+}
+
+.piecelist-navigator a {
+    color: #5E81AC;
+}
+
+.piecelist-navigator a:visited {
+    color: #5E81AC;
+}
+
+.piecelist-title {
+    font-size: clamp(1.2rem, 1.4vw, 1.8rem);
+    text-decoration: none;
+}
+
+.piece-box {
+    padding: 3vh 0vw 3vh 3vw;
+    display: inline-block;
+    text-align: left;
+}
+
+.piece-title {
+    font-size: clamp(1.5rem, 1.8vw, 2.2rem);
+    font-weight: bold;
+}
+
+.piece-artist {
+    font-size: clamp(1.4rem, 1.4vw, 1.8rem);
+    font-style: italic;
+}
+
+.chords-box {
+    padding: 2vh 0vw 0vh 0vw;
+}
+
+.chords {
+    font-family: 'Fira Code', monospace;
+    font-size: clamp(1rem, 1.2vw, 1.3rem);
+}
