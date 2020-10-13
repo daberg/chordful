@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  chordful:
+    container_name: chordful
+    build: .
+    ports:
+      - "5000:5000"
+    depends_on:
+      - "db"
+
+  db:
+    container_name: chordful-db
+    image: mongo:latest
+    volumes:
+      - "${MONGO_PATH}:/data/db"
