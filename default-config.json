@@ -1,0 +1,4 @@
+{ "database" : { "type" : "mongo",
+                 "address" : "mongodb://chordful-db:27017"
+               }
+}

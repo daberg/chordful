@@ -7,10 +7,12 @@ services:
     ports:
       - "5000:5000"
     depends_on:
-      - "db"
+      - "chordful-db"
+    volumes:
+      - "${CHORDFUL_CONFIG}:/etc/chordful"
 
-  db:
+  chordful-db:
     container_name: chordful-db
     image: mongo:latest
     volumes:
-      - "${MONGO_PATH}:/data/db"
+      - "${MONGO_DATA}:/data/db"

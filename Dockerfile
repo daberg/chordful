@@ -12,4 +12,4 @@ RUN pip install -r requirements.txt . && \
 
 USER chordful:chordful
 
-CMD python3 -m chordful
+CMD python3 -m chordful /etc/chordful

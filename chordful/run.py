@@ -1,18 +1,18 @@
 from chordful.database import initdb
 import chordful.chordlang
+
 import flask
+import json
 
 
-def runApp():
+def runApp(configPath):
+    with open(configPath) as f:
+        config = json.load(f)
+
     app = flask.Flask(__name__)
 
-    dbconfig = { "database" : { "type" : "mongo",
-                                "address" : "mongodb://localhost:27017"
-                              }
-               }
-
     # Init database; routes are closures w.r.t. the db variable
-    db = initdb(dbconfig)
+    db = initdb(config)
 
     def showpieces(startfrom):
         numentries = 25
