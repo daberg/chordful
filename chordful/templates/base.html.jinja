@@ -13,9 +13,13 @@
   </head>
   <body>
   <div class="top-bar">
-  <div class="top-bar-logo"><a class="Title" href="/">Chordful</a></div>
-  <!--<div class="top-bar-item"><a href="">Search Bar</a></div>-->
-  <!--<div class="top-bar-login"><a href="">Login</a></div>-->
+    <div class="top-bar-logo">
+      <a href="/">
+        <object type="image/svg+xml" data="{{ url_for('static', filename='logo.svg') }}" class="logo">Chordful</object>
+      </a>
+    </div>
+    <!--<div class="top-bar-item"><a href="">Search Bar</a></div>-->
+    <!--<div class="top-bar-login"><a href="">Login</a></div>-->
   </div>
   {% block content %}{% endblock %}
   </body>

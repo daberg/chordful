@@ -25,11 +25,9 @@ html {
     padding: 1.5rem 0vw 1.5rem 3vw;
 }
 
-.top-bar-logo a {
-    color: #ECEFF4;
-    text-decoration: none;
-    font-size: clamp(2rem, 3vw, 3rem);
-    font-weight: 600;
+.logo {
+    height: clamp(1.8rem, 3vw, 3rem);
+    font-size: clamp(1.8rem, 3vw, 3rem);
 }
 
 .top-bar-login {
