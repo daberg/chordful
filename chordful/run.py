@@ -14,7 +14,7 @@ def runApp(configPath):
     # Init database; routes are closures w.r.t. the db variable
     db = initdb(config)
 
-    def showpieces(startfrom):
+    def show_pieces(startfrom):
         numentries = 25
 
         morepieces = db.get_pieces(numentries + 1, startfrom=startfrom)
@@ -27,7 +27,7 @@ def runApp(configPath):
         prevfrom = max(0, startfrom - numentries) if hasprev else None
         nextfrom = startfrom + numentries if hasnext else None
 
-        return flask.render_template( 'index.html.jinja'
+        return flask.render_template( 'pieces.html.jinja'
                                     , pieces=pieces
                                     , prevfrom=prevfrom
                                     , nextfrom=nextfrom
@@ -35,11 +35,15 @@ def runApp(configPath):
 
     @app.route('/')
     def index():
-        return showpieces(0)
+        return flask.render_template('index.html.jinja')
 
-    @app.route('/from=<int:startfrom>')
-    def indexfrom(startfrom):
-        return showpieces(startfrom)
+    @app.route('/pieces/')
+    def show_pieces_from_first():
+        return show_pieces(0)
+
+    @app.route('/pieces/from=<int:piece_number>')
+    def show_pieces_from_id(piece_number):
+        return show_pieces(piece_number)
 
     @app.route('/piece/<pieceid>')
     def show_piece(pieceid):
@@ -47,7 +51,6 @@ def runApp(configPath):
 
         if not piece:
             return ("<h1>404 - resource not found</h1>", 404)
-
 
         piece["chords"] = chordful.chordlang.tohtml(piece["chords"])
 

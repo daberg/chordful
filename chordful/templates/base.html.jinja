@@ -13,10 +13,20 @@
   </head>
   <body>
   <div class="top-bar">
-    <div class="top-bar-logo">
-      <a href="/">
-        <object type="image/svg+xml" data="{{ url_for('static', filename='logo.svg') }}" class="logo">Chordful</object>
-      </a>
+    <div class="top-bar-left">
+      <div class="top-bar-logo">
+        <a href="/" style="display: inline-block; width: 100%; height: 100%">
+          <object type="image/svg+xml"
+                  data="{{ url_for('static', filename='logo.svg') }}"
+                  class="logo">
+            Chordful
+          </object>
+        </a>
+      </div>
+
+      <div>
+        <a class="top-bar-item" href="/pieces">Pieces</a>
+      </div>
     </div>
     <!--<div class="top-bar-item"><a href="">Search Bar</a></div>-->
     <!--<div class="top-bar-login"><a href="">Login</a></div>-->

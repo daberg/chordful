@@ -1,0 +1,49 @@
+{% extends 'base.html.jinja' %}}
+
+{% block content %}
+
+  <div class="piecelist-outer">
+
+    {% if pieces is none %}
+      <h1 style="text-align: center;">There are no pieces to display.</h1>
+
+    {% else %}
+      <div class="piecelist-box">
+      <table>
+        <tr>
+          <th>TITLE</th>
+          <th>ARTIST</th>
+        </tr>
+      {% for piece in pieces %}
+        <tr>
+          <td><a class="piecelist-title" href="/piece/{{ piece["_id"] }}">{{ piece['title'] }}</a></td>
+          <td class="piecelist-artist">{{ piece["artist"] }}</td>
+        </tr>
+      {% endfor %}
+      </table>
+      </div>
+
+      {% if (not (prevfrom is none)) or (not (nextfrom is none)) %}
+      <div class="piecelist-navigator">
+        <div style="text-align: center">
+          {% if prevfrom is none %}
+            <p>Prev</p>
+          {% else %}
+            <a href="/pieces/from={{ prevfrom }}">Prev</a>
+          {%endif %}
+        </div>
+        <div style="text-align: center">
+          {% if nextfrom is none %}
+            <p>Next</p>
+          {% else %}
+            <a href="/pieces/from={{ nextfrom }}">Next</a>
+          {%endif %}
+        </div>
+      </div>
+      {% endif %}
+
+    {%endif %}
+
+  </div>
+
+{% endblock %}
