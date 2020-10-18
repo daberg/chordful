@@ -38,10 +38,12 @@ html {
 }
 
 .top-bar-item {
+    display: inline-box;
     color: #ECEFF4;
     text-decoration: none;
     font-size: clamp(1.5rem, 2.5vw, 2.5rem);
     font-weight: 300;
+    margin: clamp(1.5rem, 2.5vw, 2.5rem);
 }
 
 .top-bar-left {
@@ -197,4 +199,45 @@ html {
 .chords {
     font-family: 'Fira Code', monospace;
     font-size: clamp(1rem, 1.2vw, 1.3rem);
+}
+
+#submit-container {
+    width: clamp(30rem, 70vw, 60rem);;
+    height: 80vh;
+    margin: 3vh auto;
+    justify-items: center;
+    display: grid;
+}
+
+#submit-container div, input, form {
+    display: block;
+    width: 100%;
+}
+
+#submit-container textarea {
+    box-sizing: border-box;
+    width: 100%;
+    height: 50vh;
+}
+
+#submit-container h2 {
+    display: block;
+    text-align: center;
+    color: #4c566a;
+    font-size: clamp(1.4rem, 1.8vw, 2rem);
+}
+
+#submit-container label {
+    display: block;
+    font-size: clamp(1.2rem, 1.5vw, 1.8rem);
+    color: #4c566a;
+    align-self: start;
+}
+
+#piece-submit {
+    width: 10rem;
+    height: 4rem;
+    border: #4c566a solid;
+    background: none;
+    margin: 2rem auto;
 }

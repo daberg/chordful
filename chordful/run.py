@@ -3,6 +3,7 @@ import chordful.chordlang
 
 import flask
 import json
+import bleach
 
 
 def runApp(configPath):
@@ -33,6 +34,11 @@ def runApp(configPath):
                                     , nextfrom=nextfrom
                                     )
 
+    def sanitize_piece(title, artist, chords):
+        return (bleach.clean(title,  tags=[], strip=True),
+                bleach.clean(artist, tags=[], strip=True),
+                bleach.clean(chords, tags=[], strip=True))
+
     @app.route('/')
     def index():
         return flask.render_template('index.html.jinja')
@@ -50,19 +56,52 @@ def runApp(configPath):
         piece = db.get_piece(pieceid)
 
         if not piece:
-            return ("<h1>404 - resource not found</h1>", 404)
+            return ("<h4>404 - resource not found</h4>", 404)
 
         piece["chords"] = chordful.chordlang.tohtml(piece["chords"])
 
         return flask.render_template('piece.html.jinja', piece=piece)
 
-    @app.route('/postpiece', methods=['POST'])
+    @app.route('/submit/chords/', methods=['GET', 'POST'])
+    def submit_piece():
+        if flask.request.method == 'POST':
+            form_data = flask.request.form
+
+            if not ("title" in form_data and
+                    "artist" in form_data and
+                    "chords" in form_data):
+                return ("<h4>400 - Bad Request</h4>", 400)
+
+            title = form_data["title"]
+            artist = form_data["artist"]
+            chords = form_data["chords"]
+
+            if not title or not artist or not chords:
+                return ("<h4>400 - Bad Request</h4>", 400)
+
+            title, artist, chords = sanitize_piece(title, artist, chords)
+
+            db.store_piece({"title"  : title,
+                            "artist" : artist,
+                            "chords" : chords})
+
+            return flask.redirect("/")
+
+        else:
+            return flask.render_template('submit.html.jinja')
+
+    @app.route('/api/postPiece', methods=['POST'])
     def save_piece():
         reqdata = flask.request.get_json()
 
         title = reqdata["title"]
         artist = reqdata["artist"]
         chords = reqdata["chords"]
+
+        if not title or not artist or not chords:
+            return ("400", 400)
+
+        title, artist, chords = sanitize_piece(title, artist, chords)
 
         db.store_piece({"title" : title, "artist" : artist, "chords" : chords})
 

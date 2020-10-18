@@ -1,0 +1,25 @@
+{% extends 'base.html.jinja' %}}
+
+{% block content %}
+
+<div id="submit-container">
+  <h2>Submit Piece</h2>
+  <form action="/submit/chords/" method="post">
+    <div id="piece-info">
+      <label for="piece-title">Title</label>
+      <input class="submit-input" type="text" id="piece-title" name="title">
+
+      <label for="piece-artist">Artist</label>
+      <input class="submit-input" type="text" id="piece-artist" name="artist">
+    </div>
+
+    <div>
+      <label for="piece-chords">Chords</label>
+      <textarea id="piece-chords" name="chords"></textarea>
+    </div>
+
+    <div><input id="piece-submit" type="submit" value="Submit"></div>
+  </form>
+</div>
+
+{% endblock %}
